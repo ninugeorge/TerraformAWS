@@ -1,10 +1,6 @@
 name: Terraform AWS Destroy
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
   workflow_dispatch:
 
 jobs:
