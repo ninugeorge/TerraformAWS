@@ -1,0 +1,47 @@
+name: Terraform AWS Destroy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    name: 'Terraform Apply'
+    runs-on: self-hosted
+
+    env:
+      TF_VERSION: '1.6.0'
+      AWS_REGION: 'us-east-1'
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+         
+      - name: Terraform Init
+        run: |
+          cd Terraform
+          terraform init 
+        
+
+      - name: Terraform Format Check
+        run: |
+          cd Terraform
+          terraform fmt
+
+      - name: Terraform Validate
+        run: |
+          cd Terraform
+          terraform validate
+
+      - name: Terraform Plan
+        run: |
+          cd Terraform
+          terraform plan -out=tfplan
+
+      - name: Terraform Destroy
+        run: |
+          cd Terraform
+          terraform destroy -auto-approve tfplan
