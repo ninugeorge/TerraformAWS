@@ -35,9 +35,9 @@ jobs:
       - name: Terraform Plan
         run: |
           cd Terraform
-          terraform plan -out=tfplan
+          terraform plan 
 
       - name: Terraform Destroy
         run: |
           cd Terraform
-          terraform destroy -auto-approve tfplan
+          terraform destroy -auto-approve 
