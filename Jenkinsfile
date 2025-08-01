@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        AWS_ACCESS_KEY_ID = credentials('ebbea1a5-2791-4a78-9911-a3d2e3916714')
-        AWS_SECRET_ACCESS_KEY = credentials('ebbea1a5-2791-4a78-9911-a3d2e3916714')
-        AWS_DEFAULT_REGION = 'us-east-1'
-    }
-
     stages {
         stage('Clone Repo') {
             steps {
